@@ -56,7 +56,7 @@ void DcMotor_Init(void){
  ***************************************************************************************************/
 
 void DcMotor_Rotate(DcMotor_State state,uint8 speed){
-	uint8 duty_cycle=((float)speed/100)*256;
+	uint8 duty_cycle=((float)speed/100)*255;
 	PWM_Timer0_Start(duty_cycle);
 	if(state==STOP){
 		GPIO_writePin(MOTOR_PORT,MOTOR_PIN_IN1,LOGIC_LOW);
