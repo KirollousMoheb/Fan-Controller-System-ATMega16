@@ -28,6 +28,8 @@ maximum speed.
 >e. If the temperature is greater than or equal 120C turn on the fan with 100% of its 
 maximum speed.
 
+## Video Link
+>https://youtu.be/NrGwtGJOiwo
 
 ## Table of Contents
 
