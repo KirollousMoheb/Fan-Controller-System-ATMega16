@@ -99,29 +99,47 @@ maximum speed.
 ## Drivers
 
 ### GPIO
+* `void GPIO_setupPinDirection(uint8 port_num, uint8 pin_num, GPIO_PinDirectionType direction)`: Setup the direction of the required pin input/output.
+* `void GPIO_writePin(uint8 port_num, uint8 pin_num, uint8 value)`:  Write the value Logic High or Logic Low on the required pin.
+* `uint8 GPIO_readPin(uint8 port_num, uint8 pin_num)`:Setup the direction of the required port all pins input/output.
+* `void GPIO_setupPortDirection(uint8 port_num, uint8 direction)`: Setup the direction of the required port all pins input/output.
+* `void GPIO_writePort(uint8 port_num, uint8 value)`:  Write the value on the required port.
+* `uint8 GPIO_readPort(uint8 port_num)`:  Read and return the value of the required port.
 
 
 
 
 ### LCD
-
-
+* `void LCD_init(void)`:Initialize the LCD.
+1. Setup the LCD pins directions by use the GPIO driver.
+2. Setup the LCD Data Mode 4-bits or 8-bits.
+* `void LCD_sendCommand(uint8 command)`:  Send the required command to the screen.
+* `void LCD_displayString(const char* str)`:Display the required string on the screen.
+* `void LCD_moveCursor(uint8 row,uint8 col)`: Move the cursor to a specified row and column index on the screen.
+* `void LCD_displayStringRowColumn(uint8 row,uint8 col,const char* str)`: Display the required string in a specified row and column index on the screen.
+* `void LCD_clearScreen(void)`:  Send the clear screen command
+* `void LCD_integerToString(int integer)`:   Display the required decimal value on the screen
 
 
 ### ADC
+* `void ADC_init(const ADC_ConfigType *Config_Ptr )`: The Function responsible for Choosing the Prescaler and the Reference voltage for an ADC Channel
+* `uint16 ADC_readChannel(uint8 Ch_num)`:  The Function responsible for reading the digital value from an ADC Channel
 
 
 
 ### LM35
+* `uint8 LM35_GetTemperature(void)`:  Function responsible for calculate the temperature from the ADC digital value.
 
 
 ### Motor
-
+* `void DcMotor_Init(void)`:The Function responsible for setup the direction for the two motor pins through the GPIO driver.
+* `void DcMotor_Rotate(DcMotor_State state,uint8 speed)`: The function is responsible for rotating the DC Motor CW/ or A-CW or stop the motor based on the state input state value and send the required duty cycle to the PWM driver based on the required speed value
 
 ### Timer
+* `void PWM_Timer0_Start(uint8 duty_cycle)`:Generate PWM Signal on TIMER0 with a specific duty cycle.
 
-
-
+## OPTIONS
+The timer driver will be updated in the next projects to suit all timers with all modes
 
 
  
