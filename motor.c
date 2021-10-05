@@ -37,6 +37,7 @@ void DcMotor_Init(void){
 	GPIO_setupPinDirection(MOTOR_PORT,MOTOR_PIN_IN2,PIN_OUTPUT);
 	GPIO_writePin(MOTOR_PORT,MOTOR_PIN_IN1,LOGIC_LOW);
 	GPIO_writePin(MOTOR_PORT,MOTOR_PIN_IN2,LOGIC_LOW);
+
 }
 
 
@@ -57,7 +58,17 @@ void DcMotor_Init(void){
 void DcMotor_Rotate(DcMotor_State state,uint8 speed){
 	uint8 duty_cycle=((float)speed/100)*256;
 	PWM_Timer0_Start(duty_cycle);
-	MOTOR_STATE_PORT=(MOTOR_STATE_PORT&0XFC)|(state&0x03);
+	if(STOP==state){
+		GPIO_writePin(MOTOR_PORT,MOTOR_PIN_IN1,LOGIC_LOW);
+		GPIO_writePin(MOTOR_PORT,MOTOR_PIN_IN2,LOGIC_LOW);
+
+	}else if(state==CLOCKWISE){
+		GPIO_writePin(MOTOR_PORT,MOTOR_PIN_IN1,LOGIC_HIGH);
+		GPIO_writePin(MOTOR_PORT,MOTOR_PIN_IN2,LOGIC_LOW);
+	}else{
+		GPIO_writePin(MOTOR_PORT,MOTOR_PIN_IN1,LOGIC_LOW);
+		GPIO_writePin(MOTOR_PORT,MOTOR_PIN_IN2,LOGIC_HIGH);
+	}
 
 
 

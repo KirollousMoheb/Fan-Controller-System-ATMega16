@@ -13,7 +13,6 @@
 #ifndef MOTOR_H_
 #define MOTOR_H_
 #include "std_types.h"
-#include "common_macros.h"
 /*******************************************************************************
  *                                Definitions                                  *
  *******************************************************************************/
@@ -23,15 +22,14 @@
 #define MOTOR_PIN_IN4
 #define MOTOR_PIN_EN1  			   PIN3_ID
 #define MOTOR_PIN_EN2
-
 #define MOTOR_PORT	   	           PORTB_ID
-#define MOTOR_STATE_PORT		   PORTB
+
 
 /*******************************************************************************
  *                               Types Declaration                             *
  *******************************************************************************/
 typedef enum{
-	STOP,ANTI_CLOCKWISE,CLOCKWISE
+	STOP,CLOCKWISE,ANTI_CLOCKWISE
 }DcMotor_State;
 
 
